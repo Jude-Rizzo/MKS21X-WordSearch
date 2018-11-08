@@ -6,8 +6,8 @@ public class WordSearch{
      *@param row is the starting height of the WordSearch
      *@param col is the starting width of the WordSearch
      */
-    private int row;
-    private int col;
+    public int row;
+    public int col;
 
 
 
