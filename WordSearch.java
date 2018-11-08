@@ -6,8 +6,7 @@ public class WordSearch{
      *@param row is the starting height of the WordSearch
      *@param col is the starting width of the WordSearch
      */
-    public int row;
-    public int col;
+
 
 
 
@@ -16,8 +15,7 @@ public class WordSearch{
     public WordSearch(int rows, int cols){
       if(cols < 0 || rows < 0)
         throw new IllegalArgumentException("No");
-      col = cols;
-      row = rows;
+
       data = new char[rows][cols];
       this.clear();
 
