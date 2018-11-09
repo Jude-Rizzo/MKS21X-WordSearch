@@ -102,4 +102,17 @@ public class WordSearch{
      }
      return true;
      }
+
+
+     public boolean addWordDiagonal(String word, int row, int col){
+       if (word.length() > data.length - row || word.length() > data[row].length - col) return false;
+       int row2 = row;
+       int col2 = col;
+       for (int i = 0; i < word.length(); i++){
+         if (data[row2][col2] != '_' && data[row2][col2] != word.charAt(i)){
+           return false;
+         }
+         row2++;
+         col2++;
+       }
  }
