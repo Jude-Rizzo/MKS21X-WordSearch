@@ -115,4 +115,11 @@ public class WordSearch{
          row2++;
          col2++;
        }
+       for (int i = 0; i < word.length(); i++){
+        data[row][col] = word.charAt(i);
+        row++;
+        col++;
+      }
+      return true;
+    }
  }
