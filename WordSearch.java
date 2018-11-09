@@ -1,11 +1,91 @@
+import java.util.*; //random, scanner, arraylist
+import java.io.*; //file, filenotfoundexception
 public class WordSearch{
-  private char[][]data;
+    private char[][]data;
+
+    //the random seed used to produce this WordSearch
+    private int seed;
+
+    //a random Object to unify your random calls
+    private Random randgen;
+
+    //all words from a text file get added to wordsToAdd, indicating that they have not yet been added
+    private ArrayList<String>wordsToAdd;
+
+    //all words that were successfully added get moved into wordsAdded.
+    private ArrayList<String>wordsAdded;
+
+
+
+    private void clear(){
+      for(int i = 0; i < data.length; i++){
+        for(int j = 0; j<data[i].length; j++){
+          data[i][j] = '_';
+        }
+      }
+    }
+
+
+    public WordSearch( int rows, int cols, String fileName){
+      data.clear()
+      this.addAllWords()
+
+    }
+
+    public WordSearch(int rows, int cols, String fileName, int randSeed){
+  
+    }
 
     /**Initialize the grid to the size specified
      *and fill all of the positions with '_'
      *@param row is the starting height of the WordSearch
      *@param col is the starting width of the WordSearch
      */
+
+     private boolean addAllWords(){
+
+     }
+
+
+     public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -23,13 +103,7 @@ public class WordSearch{
     }
 
     /**Set all values in the WordSearch to underscores'_'*/
-    private void clear(){
-      for(int i = 0; i < data.length; i++){
-        for(int j = 0; j<data[i].length; j++){
-          data[i][j] = '_';
-        }
-      }
-    }
+
 
 
     /**Each row is a new line, there is a space between each letter
