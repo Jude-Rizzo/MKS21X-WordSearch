@@ -1,5 +1,6 @@
 import java.util.*; //random, scanner, arraylist
 import java.io.*; //file, filenotfoundexception
+import java.random;
 public class WordSearch{
     private char[][]data;
 
@@ -16,24 +17,29 @@ public class WordSearch{
     private ArrayList<String>wordsAdded;
 
 
-
+//clear function just to set everything to "_"
     private void clear(){
       for(int i = 0; i < data.length; i++){
         for(int j = 0; j<data[i].length; j++){
+          // loop through everything and set it to _
           data[i][j] = '_';
         }
       }
     }
 
 
-    public WordSearch( int rows, int cols, String fileName){
-      data.clear()
+    public WordSearch( int rows, int cols, String fileName) throws FileNotFoundException{
+      if(rows < 0 || cols < 0){
+        throw IllegalArgumentException;
+      }
+      File f = new File(fileName);
+      Scanner in = new Scanner(f);
       this.addAllWords()
 
     }
 
     public WordSearch(int rows, int cols, String fileName, int randSeed){
-  
+
     }
 
     /**Initialize the grid to the size specified
