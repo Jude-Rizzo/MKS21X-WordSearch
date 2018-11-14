@@ -29,11 +29,25 @@ public class WordSearch{
 
 
     public WordSearch( int rows, int cols, String fileName) throws FileNotFoundException{
-      if(rows < 0 || cols < 0){
+      //Make sure there are rows and columns
+      if(rows < 1 || cols < 1){
         throw IllegalArgumentException;
       }
+
+      //Now see if the file exists and if not make a readable error message for the user
+      try{
       File f = new File(fileName);
+      } catch(FileNotFoundException e) {
+      System.out.println("File not found: " + fileName);
+      System.exit(1);
+    }
+
       Scanner in = new Scanner(f);
+      while(in.hasNext()){
+        wordsToAdd.add(in.next());
+      }
+      randgen = new Random()
+      seed = randgen.randInt();
       this.addAllWords()
 
     }
