@@ -31,7 +31,7 @@ public class WordSearch{
     public WordSearch( int rows, int cols, String fileName) throws FileNotFoundException{
       //Make sure there are rows and columns
       if(rows < 1 || cols < 1){
-        throw IllegalArgumentException;
+        throw new IllegalArgumentException();
       }
 
       //Now see if the file exists and if not make a readable error message for the user
@@ -41,20 +41,42 @@ public class WordSearch{
       System.out.println("File not found: " + fileName);
       System.exit(1);
     }
-
+      File f = new File(fileName);
       Scanner in = new Scanner(f);
       while(in.hasNext()){
         wordsToAdd.add(in.next());
       }
-      randgen = new Random()
+      randgen = new Random();
       seed = randgen.randInt();
-      this.addAllWords()
+      this.addAllWords();
 
     }
 
-    public WordSearch(int rows, int cols, String fileName, int randSeed){
+    public WordSearch(int rows, int cols, String fileName, int randSeed) throws FileNotFoundException{
+      //Make sure there are rows and columns
+      if(rows < 1 || cols < 1){
+        throw new IllegalArgumentException();
+      }
 
+      //Now see if the file exists and if not make a readable error message for the user
+      try{
+      File f = new File(fileName);
+      } catch(FileNotFoundException e) {
+      System.out.println("File not found: " + fileName);
+      System.exit(1);
     }
+      File f = new File(fileName);
+      Scanner in = new Scanner(f);
+      while(in.hasNext()){
+        wordsToAdd.add(in.next());
+      }
+
+      //use randSeed
+      seed = randSeed;
+      randgen = Random.randInt(randSeed);
+      this.addAllWords();
+    }
+
 
     /**Initialize the grid to the size specified
      *and fill all of the positions with '_'
@@ -68,8 +90,20 @@ public class WordSearch{
 
 
      public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+       // Loop through entire word
+        for(int i = 0; i < row + word.length(); i++ ){
+          //Start at the initial position, then check if there's another letter there, looping through and checking all positions
+
+          if(data[row + i*(rowIncrement)][col + i*colIncrement] != '_' || data[row + i][col + i] != word.charAt(i)){
+            return false;
+          }
+        }
+        //Then add the incrememnts to each of the columns and each of the rows and check
+
+
 
         }
+
 
 
 
