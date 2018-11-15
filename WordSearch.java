@@ -103,10 +103,14 @@ public class WordSearch{
             return false;
           }
         }
-        //Then add the incrememnts to each of the columns and each of the rows and check
+        //Then add the incrememnts to each of the columns and each of the rows
+        //since we already checked we can assume adding is possible and just set each one equal
+        //to the desired value
 
+        for(int i = 0; i < word.length(); i++){
+          data[row + i*(rowIncrement)][col + i*(colIncrement)] = word.charAt(i);
+        }
         return true;
-
         }
 
 
