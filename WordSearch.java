@@ -85,7 +85,8 @@ public class WordSearch{
      *@param col is the starting width of the WordSearch
      */
 
-     private boolean addAllWords(){
+     private void addAllWords(){
+       for()
        return true;
      }
 
