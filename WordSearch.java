@@ -46,6 +46,8 @@ public class WordSearch{
       while(in.hasNext()){
         wordsToAdd.add(in.next());
       }
+      wordsAdded = new ArrayList();
+      wordsToAdd = new ArrayList();
       randgen = new Random();
       seed = randgen.nextInt();
       this.addAllWords();
@@ -146,7 +148,9 @@ public class WordSearch{
              return output;
            }
 
-
+        public static void main(String[] args){
+          
+        }
 
 
 //OLDER FUNCTIONS
