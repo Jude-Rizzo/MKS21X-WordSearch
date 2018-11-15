@@ -1,6 +1,5 @@
 import java.util.*; //random, scanner, arraylist
 import java.io.*; //file, filenotfoundexception
-import java.random;
 public class WordSearch{
     private char[][]data;
 
@@ -37,6 +36,7 @@ public class WordSearch{
       //Now see if the file exists and if not make a readable error message for the user
       try{
       File f = new File(fileName);
+      Scanner in = new Scanner(f);
       } catch(FileNotFoundException e) {
       System.out.println("File not found: " + fileName);
       System.exit(1);
@@ -47,7 +47,7 @@ public class WordSearch{
         wordsToAdd.add(in.next());
       }
       randgen = new Random();
-      seed = randgen.randInt();
+      seed = randgen.nextInt();
       this.addAllWords();
 
     }
@@ -61,6 +61,7 @@ public class WordSearch{
       //Now see if the file exists and if not make a readable error message for the user
       try{
       File f = new File(fileName);
+      Scanner in = new Scanner(f);
       } catch(FileNotFoundException e) {
       System.out.println("File not found: " + fileName);
       System.exit(1);
@@ -73,7 +74,7 @@ public class WordSearch{
 
       //use randSeed
       seed = randSeed;
-      randgen = Random.randInt(randSeed);
+      randgen = new Random(randSeed);
       this.addAllWords();
     }
 
@@ -85,13 +86,17 @@ public class WordSearch{
      */
 
      private boolean addAllWords(){
-
+       return true;
      }
 
 
      public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
        // Loop through entire word
         for(int i = 0; i < row + word.length(); i++ ){
+          //make sure the length
+          if(row + word.length()*(rowIncrement) < 0 || col + word.length()*colIncrement < 0){
+            return false;
+          }
           //Start at the initial position, then check if there's another letter there, looping through and checking all positions
 
           if(data[row + i*(rowIncrement)][col + i*colIncrement] != '_' || data[row + i][col + i] != word.charAt(i)){
@@ -100,7 +105,7 @@ public class WordSearch{
         }
         //Then add the incrememnts to each of the columns and each of the rows and check
 
-
+        return true;
 
         }
 
