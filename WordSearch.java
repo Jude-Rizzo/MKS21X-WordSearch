@@ -86,8 +86,26 @@ public class WordSearch{
      */
 
      private void addAllWords(){
-       for()
-       return true;
+       int counter = 0;
+       //use 70 tries per word
+       //Loop through every term in words to a
+       while(wordsToAdd.size() > 0 && counter < 70){
+
+      //test random words and arrangements
+        if(addWord(wordsToAdd.get(0),
+                  randgen.nextInt(data.length), randgen.nextInt(data[0].length),
+                  randgen.nextInt(3) - 1, randgen.nextInt(3) - 1 )){
+                    counter = 0;
+                    wordsAdded.add(wordsToAdd.get(0));
+                    wordsToAdd.remove(0);
+
+                  } else {
+                    counter ++;
+                  }
+
+      //If it's false try again and add 1 to the counter
+      //If it's true add the word and move on to the next one
+       }
      }
 
 
@@ -117,43 +135,21 @@ public class WordSearch{
 
 
 
+        public String toString(){
+             String output = "|";
+             for (int i = 0; i < data.length; i++){
+               for (int j = 0; j < data[i].length; j++){
+                 output += data[i][j] + " ";
+               }
+               output += "|\n|";
+             }
+             return output;
+           }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//OLDER FUNCTIONS
 
 
     public WordSearch(int rows, int cols){
@@ -174,16 +170,7 @@ public class WordSearch{
      *@return a String with each character separated by spaces, and rows
      *separated by newlines.
      */
-     public String toString(){
-          String output = "";
-          for (int i = 0; i < data.length; i++){
-            for (int j = 0; j < data[i].length; j++){
-              output += data[i][j] + " ";
-            }
-            output += "\n";
-          }
-          return output;
-        }
+
 
 
 
