@@ -86,6 +86,16 @@ public class WordSearch{
      *@param row is the starting height of the WordSearch
      *@param col is the starting width of the WordSearch
      */
+     public String letters = "qwertyuiopasdfghjklzxcvbnm";
+     private boolean fillInWords(){
+       for(int j = 0; j < data.length; j++){
+         for(int k = 0; k < data[j].length; k++){
+           if(data[j][k] == '_'){
+             data[j][k] = letters.chatAt(randgen.nextInt(26));
+           }
+         }
+       }
+     }
 
      private void addAllWords(){
        int counter = 0;
@@ -111,7 +121,7 @@ public class WordSearch{
      }
 
 
-     public boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+     private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
        // Loop through entire word
         for(int i = 0; i < row + word.length(); i++ ){
           //make sure the length
@@ -149,7 +159,9 @@ public class WordSearch{
            }
 
         public static void main(String[] args){
-          
+          if(args.length == 3){
+
+          }
         }
 
 
