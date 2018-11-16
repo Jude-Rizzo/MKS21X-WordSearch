@@ -46,8 +46,8 @@ public class WordSearch{
       while(in.hasNext()){
         wordsToAdd.add(in.next());
       }
-      wordsAdded = new ArrayList();
-      wordsToAdd = new ArrayList();
+      wordsAdded = new ArrayList<String>();
+      wordsToAdd = new ArrayList<String>();
       randgen = new Random();
       seed = randgen.nextInt();
       this.addAllWords();
@@ -87,11 +87,11 @@ public class WordSearch{
      *@param col is the starting width of the WordSearch
      */
      public String letters = "qwertyuiopasdfghjklzxcvbnm";
-     private boolean fillInWords(){
+     private void fillInWords(){
        for(int j = 0; j < data.length; j++){
          for(int k = 0; k < data[j].length; k++){
            if(data[j][k] == '_'){
-             data[j][k] = letters.chatAt(randgen.nextInt(26));
+             data[j][k] = letters.charAt(randgen.nextInt(26));
            }
          }
        }
