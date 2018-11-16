@@ -164,6 +164,11 @@ public class WordSearch{
           }
         }
 
+        public static void main(String[] args){
+          if(args.length < 3 || args.length > 5){
+            System.out.println("Sorry, you've entered some incorrect arguments. \n You have to javac WordSearch (int rows) (int columns) (textfile) (seed: optional) (key: optional)")
+          }
+        }
 
 //OLDER FUNCTIONS
 
