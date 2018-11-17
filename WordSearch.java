@@ -164,9 +164,27 @@ public class WordSearch{
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2]);
+              ans.fillInWords();
               System.out.println(ans);
 
 
+            }
+            if(args.length == 4){
+              int rows = Integer.parseInt(args[0]);
+              int columns = Integer.parseInt(args[1]);
+              WordSearch ans = new WordSearch(rows, columns, args[2], args[3]);
+              ans.fillInWords();
+              System.out.println(ans);
+            }
+
+            if(args.length == 5){
+              int rows = Integer.parseInt(args[0]);
+              int columns = Integer.parseInt(args[1]);
+              WordSearch ans = new WordSearch(rows, columns, args[2], args[3]);
+              WordSearch key = new WordSearch(rows, columns, args[2], args[3]);
+              ans.fillInWords();
+              System.out.println(ans);
+              System.out.println(key);
             }
           } catch(NumberFormatException e){
               System.out.println("Try again: java rows cols textFile optional seed optional key");
