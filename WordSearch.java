@@ -47,9 +47,10 @@ public class WordSearch{
         wordsToAdd.add(in.next());
       }
 
-
       randgen = new Random();
       seed = randgen.nextInt();
+      data = new char[rows][cols];
+      this.clear();
       this.addAllWords();
 
     }
@@ -99,12 +100,14 @@ public class WordSearch{
 
      private void addAllWords(){
        int counter = 0;
+       System.out.println(wordsToAdd);
        //use 70 tries per word
        //Loop through every term in words to a
        while(wordsToAdd.size() > 1 && counter < 70){
-         int s = randgen.nextInt(wordsToAdd.size());
+         int s = Math.abs(randgen.nextInt()%wordsToAdd.size());
 
       //test random words and arrangements
+        System.out.println(data.length);
         if(addWord(wordsToAdd.get(s),
                   randgen.nextInt(data.length), randgen.nextInt(data[0].length),
                   randgen.nextInt(3) - 1, randgen.nextInt(3) - 1 )) {
