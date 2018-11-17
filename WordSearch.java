@@ -165,8 +165,20 @@ public class WordSearch{
         }
 
         public static void main(String[] args){
-          if(args.length < 3 || args.length > 5){
-            System.out.println("Sorry, you've entered some incorrect arguments. \n You have to javac WordSearch (int rows) (int columns) (textfile) (seed: optional) (key: optional)")
+          try{
+            if(args.length == 3){
+              int rows = Integer.parseInt(args[0]);
+              int columns = Integer.parseInt(args[1]);
+              WordSearch ans = new WordSearch(rows, columns, args[2]);
+              WordSearch.addAllWords();
+              System.out.println(WordSearch);
+
+
+            }
+            catch(NumberFormatException e){
+              System.out.println("Try again: java rows cols textFile optional seed optional key");
+              System.exit(1);
+            }
           }
         }
 
