@@ -158,29 +158,23 @@ public class WordSearch{
              return output;
            }
 
-        public static void main(String[] args){
-          if(args.length == 3){
-
-          }
-        }
-
-        public static void main(String[] args){
+        public static void main(String[] args) throws FileNotFoundException{
           try{
             if(args.length == 3){
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2]);
-              WordSearch.addAllWords();
-              System.out.println(WordSearch);
+              ans.addAllWords();
+              System.out.println(ans);
 
 
             }
-            catch(NumberFormatException e){
+          }  catch(NumberFormatException e){
               System.out.println("Try again: java rows cols textFile optional seed optional key");
               System.exit(1);
             }
           }
-        }
+
 
 //OLDER FUNCTIONS
 
