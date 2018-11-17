@@ -10,10 +10,10 @@ public class WordSearch{
     private Random randgen;
 
     //all words from a text file get added to wordsToAdd, indicating that they have not yet been added
-    private ArrayList<String>wordsToAdd;
+    private ArrayList<String> wordsToAdd = new ArrayList<String>();
 
     //all words that were successfully added get moved into wordsAdded.
-    private ArrayList<String>wordsAdded;
+    private ArrayList<String> wordsAdded = new ArrayList<String>();
 
 
 //clear function just to set everything to "_"
@@ -46,8 +46,8 @@ public class WordSearch{
       while(in.hasNext()){
         wordsToAdd.add(in.next());
       }
-      wordsAdded = new ArrayList<String>();
-      wordsToAdd = new ArrayList<String>();
+
+
       randgen = new Random();
       seed = randgen.nextInt();
       this.addAllWords();
@@ -101,12 +101,12 @@ public class WordSearch{
        int counter = 0;
        //use 70 tries per word
        //Loop through every term in words to a
-       while(wordsToAdd.size() > 0 && counter < 70){
+       while(wordsToAdd.size() > 1 && counter < 70){
 
       //test random words and arrangements
         if(addWord(wordsToAdd.get(0),
                   randgen.nextInt(data.length), randgen.nextInt(data[0].length),
-                  randgen.nextInt(3) - 1, randgen.nextInt(3) - 1 )){
+                  randgen.nextInt(3) - 1, randgen.nextInt(3) - 1 )) {
                     counter = 0;
                     wordsAdded.add(wordsToAdd.get(0));
                     wordsToAdd.remove(0);
@@ -164,12 +164,11 @@ public class WordSearch{
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2]);
-              ans.addAllWords();
               System.out.println(ans);
 
 
             }
-          }  catch(NumberFormatException e){
+          } catch(NumberFormatException e){
               System.out.println("Try again: java rows cols textFile optional seed optional key");
               System.exit(1);
             }
