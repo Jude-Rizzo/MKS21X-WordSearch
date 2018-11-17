@@ -102,14 +102,15 @@ public class WordSearch{
        //use 70 tries per word
        //Loop through every term in words to a
        while(wordsToAdd.size() > 1 && counter < 70){
+         int s = randgen.nextInt(wordsToAdd.size());
 
       //test random words and arrangements
-        if(addWord(wordsToAdd.get(0),
+        if(addWord(wordsToAdd.get(s),
                   randgen.nextInt(data.length), randgen.nextInt(data[0].length),
                   randgen.nextInt(3) - 1, randgen.nextInt(3) - 1 )) {
                     counter = 0;
-                    wordsAdded.add(wordsToAdd.get(0));
-                    wordsToAdd.remove(0);
+                    wordsAdded.add(wordsToAdd.get(s));
+                    wordsToAdd.remove(s);
 
                   } else {
                     counter ++;
@@ -158,7 +159,7 @@ public class WordSearch{
              return output;
            }
 
-        public static void main(String[] args) throws FileNotFoundException{
+        public static void main(String[] args)throws FileNotFoundException{
           try{
             if(args.length == 3){
               int rows = Integer.parseInt(args[0]);
@@ -172,7 +173,7 @@ public class WordSearch{
             if(args.length == 4){
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
-              WordSearch ans = new WordSearch(rows, columns, args[2], args[3]);
+              WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
               ans.fillInWords();
               System.out.println(ans);
             }
@@ -180,11 +181,8 @@ public class WordSearch{
             if(args.length == 5){
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
-              WordSearch ans = new WordSearch(rows, columns, args[2], args[3]);
-              WordSearch key = new WordSearch(rows, columns, args[2], args[3]);
-              ans.fillInWords();
+              WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
               System.out.println(ans);
-              System.out.println(key);
             }
           } catch(NumberFormatException e){
               System.out.println("Try again: java rows cols textFile optional seed optional key");
