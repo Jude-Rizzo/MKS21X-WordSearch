@@ -177,9 +177,10 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
              }
              return output;
            }
-
+        //Parse integers command = Integer.parseInt(args[j])
         public static void main(String[] args)throws FileNotFoundException{
           try{
+            //try for all 3 scenarios where input is correct, catch incorrect input error
             if(args.length == 3){
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
@@ -203,6 +204,7 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
               System.out.println(ans);
             }
+            //Number Format exception = improper input; file not found caught already in the constructor
           } catch(NumberFormatException e){
               System.out.println("Wrong input \n Try again: java rows cols textFile seed(optional) key(optional, type in any char to enable)");
               System.exit(1);
