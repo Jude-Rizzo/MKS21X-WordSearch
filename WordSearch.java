@@ -204,7 +204,7 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
               System.out.println(ans);
             }
           } catch(NumberFormatException e){
-              System.out.println("Try again: java rows cols textFile optional seed optional key");
+              System.out.println("Wrong input \n Try again: java rows cols textFile seed(optional) key(optional, type in any char to enable)");
               System.exit(1);
             }
           }
