@@ -76,8 +76,10 @@ public class WordSearch{
       }
 
       //use randSeed
+      data = new char[rows][cols];
       seed = randSeed;
       randgen = new Random(randSeed);
+      this.clear();
       this.addAllWords();
     }
 
@@ -100,16 +102,14 @@ public class WordSearch{
 
      private void addAllWords(){
        int counter = 0;
-       System.out.println(wordsToAdd);
        //use 70 tries per word
        //Loop through every term in words to a
-       while(wordsToAdd.size() > 1 && counter < 70){
+       while(wordsToAdd.size() > 1 && counter < 100){
          int s = Math.abs(randgen.nextInt()%wordsToAdd.size());
 
       //test random words and arrangements
-        System.out.println(data.length);
         if(addWord(wordsToAdd.get(s),
-                  randgen.nextInt(data.length), randgen.nextInt(data[0].length),
+                  Math.abs(randgen.nextInt(data.length)), Math.abs(randgen.nextInt(data[0].length)),
                   randgen.nextInt(3) - 1, randgen.nextInt(3) - 1 )) {
                     counter = 0;
                     wordsAdded.add(wordsToAdd.get(s));
@@ -124,29 +124,45 @@ public class WordSearch{
        }
      }
 
-
-     private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
-       // Loop through entire word
-        for(int i = 0; i < row + word.length(); i++ ){
-          //make sure the length
-          if(row + word.length()*(rowIncrement) < 0 || col + word.length()*colIncrement < 0){
-            return false;
-          }
-          //Start at the initial position, then check if there's another letter there, looping through and checking all positions
-
-          if(data[row + i*(rowIncrement)][col + i*colIncrement] != '_' || data[row + i][col + i] != word.charAt(i)){
-            return false;
-          }
+     //Make a helper function to try and isolate the problem and fix it
+     private boolean checkWord(String word,int row, int col, int rowIncrement, int colIncrement){
+       //make sure you're actuall adding a row
+        if (rowIncrement == 0 && colIncrement == 0) {
+                return false;
         }
-        //Then add the incrememnts to each of the columns and each of the rows
-        //since we already checked we can assume adding is possible and just set each one equal
-        //to the desired value
+      //put all the other problems in a try catch block to prevent errors
+        try {
+                int r = row;
+                int c = col;
+                //loop through and make sure at each point in the word
+                //that the slot is either empty or has a shared letter with the word
+                for (int i = 0; i < word.length(); i++, r += rowIncrement, c += colIncrement) {
+                        char letter = word.charAt(i);
+                        if (data[r][c] != letter && data[r][c] != '_') {
+                                return false;
+                        }
+                }
+                return true;
+        } catch (ArrayIndexOutOfBoundsException e) {
+                return false;
+        }
+}
 
-        for(int i = 0; i < word.length(); i++){
-          data[row + i*(rowIncrement)][col + i*(colIncrement)] = word.charAt(i);
+
+private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
+        if (!checkWord(word, row, col, rowIncrement, colIncrement)) {
+                return false;
+        }
+        int x = col;
+        int y = row;
+        for (int i = 0; i < word.length(); i++) {
+                char letter = word.charAt(i);
+                data[x][y] = letter;
+                x += colIncrement;
+                y += rowIncrement;
         }
         return true;
-        }
+}
 
 
 
