@@ -114,7 +114,6 @@ public class WordSearch{
                     counter = 0;
                     wordsAdded.add(wordsToAdd.get(s));
                     wordsToAdd.remove(s);
-                    System.out.println(this);
                   } else {
                     counter ++;
                   }
@@ -131,7 +130,7 @@ public class WordSearch{
        return false;
 
      }
-     
+
        try{
          int r2 = r;
          int c2 = c;
