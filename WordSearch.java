@@ -190,7 +190,7 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
 
 
             }
-            if(args.length == 4){
+            if(args.length == 4 || (args.length == 5 && !args[4].equals("key"))){
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
@@ -198,11 +198,14 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
               System.out.println(ans);
             }
 
-            if(args.length == 5){
+            if(args.length == 5 && args[4].equals("key")){
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
               System.out.println(ans);
+              ans.fillInWords();
+              System.out.println(ans);
+              System.out.println("The seed was " + args[3]);
             }
             //Number Format exception = improper input; file not found caught already in the constructor
           } catch(NumberFormatException e){
