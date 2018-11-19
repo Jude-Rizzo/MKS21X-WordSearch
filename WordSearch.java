@@ -171,7 +171,7 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
              String output = "|";
              for (int i = 0; i < data.length; i++){
                for (int j = 0; j < data[i].length; j++){
-                 output += data[i][j] + " ";
+                 output += (data[i][j] + " ").toUpperCase();
                }
                output += "|\n|";
              }
