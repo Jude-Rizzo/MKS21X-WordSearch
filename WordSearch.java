@@ -114,7 +114,7 @@ public class WordSearch{
                     counter = 0;
                     wordsAdded.add(wordsToAdd.get(s));
                     wordsToAdd.remove(s);
-
+                    System.out.println(this);
                   } else {
                     counter ++;
                   }
@@ -125,44 +125,36 @@ public class WordSearch{
      }
 
      //Make a helper function to try and isolate the problem and fix it
-     private boolean checkWord(String word,int row, int col, int rowIncrement, int colIncrement){
-       //make sure you're actuall adding a row
-        if (rowIncrement == 0 && colIncrement == 0) {
-                return false;
-        }
-      //put all the other problems in a try catch block to prevent errors
-        try {
-                int r = row;
-                int c = col;
-                //loop through and make sure at each point in the word
-                //that the slot is either empty or has a shared letter with the word
-                for (int i = 0; i < word.length(); i++, r += rowIncrement, c += colIncrement) {
-                        char letter = word.charAt(i);
-                        if (data[r][c] != letter && data[r][c] != '_') {
-                                return false;
-                        }
-                }
-                return true;
-        } catch (ArrayIndexOutOfBoundsException e) {
-                return false;
-        }
-}
+     private boolean addWord(String word, int r, int c, int rowIncrement, int colIncrement){
+       if (rowIncrement == 0 && colIncrement == 0){
 
+       return false;
 
-private boolean addWord(String word,int row, int col, int rowIncrement, int colIncrement){
-        if (!checkWord(word, row, col, rowIncrement, colIncrement)) {
-                return false;
-        }
-        int x = col;
-        int y = row;
-        for (int i = 0; i < word.length(); i++) {
-                char letter = word.charAt(i);
-                data[x][y] = letter;
-                x += colIncrement;
-                y += rowIncrement;
-        }
-        return true;
-}
+     }
+     
+       try{
+         int r2 = r;
+         int c2 = c;
+         for (int i = 0; i < word.length(); i++){
+           if (data[r2][c2] != '_' && data[r2][c2] != word.charAt(i)){
+             return false;
+           }
+           c2 += colIncrement;
+           r2 += rowIncrement;
+         }
+       }
+       catch (ArrayIndexOutOfBoundsException e){
+         return false;
+       }
+       for (int i = 0; i < word.length(); i++){
+         data[r][c] = word.charAt(i);
+         c += colIncrement;
+         r += rowIncrement;
+       }
+       wordsAdded.add(word);
+       wordsToAdd.remove(word);
+       return true;
+     }
 
 
 
@@ -209,7 +201,7 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
             }
             //Number Format exception = improper input; file not found caught already in the constructor
           } catch(NumberFormatException e){
-              System.out.println("Wrong input \n usage: java WordSearch [rows cols filename [randomSeed [answers]]]");
+              System.out.println("Wrong input \n usage: java WordSearch [rows cols filename [randomSeed [answers]]] \n Make sure your seed is less than 10000");
               System.exit(1);
             }
           }
