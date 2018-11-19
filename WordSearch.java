@@ -105,7 +105,7 @@ public class WordSearch{
        //use 70 tries per word
        //Loop through every term in words to a
        while(wordsToAdd.size() > 1 && counter < 100){
-         int s = Math.abs(randgen.nextInt()%wordsToAdd.size());
+         int s = Math.abs(randgen.nextInt()% (wordsToAdd.size() - 1));
 
       //test random words and arrangements
         if(addWord(wordsToAdd.get(s),
