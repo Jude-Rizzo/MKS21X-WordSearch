@@ -206,7 +206,7 @@ private boolean addWord(String word,int row, int col, int rowIncrement, int colI
             }
             //Number Format exception = improper input; file not found caught already in the constructor
           } catch(NumberFormatException e){
-              System.out.println("Wrong input \n Try again: java rows cols textFile seed(optional) key(optional, type in any char to enable)");
+              System.out.println("Wrong input \n usage: java WordSearch [rows cols filename [randomSeed [answers]]]");
               System.exit(1);
             }
           }
