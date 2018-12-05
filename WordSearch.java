@@ -16,6 +16,8 @@ public class WordSearch{
     private ArrayList<String> wordsAdded = new ArrayList<String>();
 
 
+
+
 //clear function just to set everything to "_"
     private void clear(){
       for(int i = 0; i < data.length; i++){
@@ -156,8 +158,6 @@ public class WordSearch{
      }
 
 
-
-
         public String toString(){
              String output = "|";
              for (int i = 0; i < data.length; i++){
@@ -166,7 +166,9 @@ public class WordSearch{
                }
                output += "|\n|";
              }
+
              output = output.substring(0, output.length() - 1);
+
              output = output + "\n" + "Words: ";
              for(int i = 0; i < wordsAdded.size(); i++){
                output += wordsAdded.get(i).toUpperCase() + ",";
@@ -174,6 +176,19 @@ public class WordSearch{
              }
              return output;
            }
+
+           public String toString(boolean T){
+                String output = "|";
+                for (int i = 0; i < data.length; i++){
+                  for (int j = 0; j < data[i].length; j++){
+                    output += (data[i][j] + " ").toUpperCase();
+                  }
+                  output += "|\n|";
+                }
+
+                output = output.substring(0, output.length() - 1);
+                return output;
+              }
         //Parse integers command = Integer.parseInt(args[j])
         public static void main(String[] args)throws FileNotFoundException{
           try{
@@ -188,11 +203,15 @@ public class WordSearch{
 
             }
             if(args.length == 4 || (args.length == 5 && !args[4].equals("key"))){
+              if(Integer.parseInt(args[3]) < 0 || Integer.parseInt(args[3]) > 10000){
+                System.out.println("Your seed must be from 0 to 1000");
+              } else {
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
               ans.fillInWords();
               System.out.println(ans);
+            }
             }
 
             if(args.length == 5 && args[4].equals("key")){
@@ -202,8 +221,10 @@ public class WordSearch{
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
-              System.out.println(ans);
+
+              System.out.println(ans.toString(true));
               ans.fillInWords();
+
               System.out.println(ans);
               System.out.println("The seed was " + args[3]);
             }
