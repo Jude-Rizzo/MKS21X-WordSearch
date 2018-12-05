@@ -166,6 +166,11 @@ public class WordSearch{
                }
                output += "|\n|";
              }
+             output = output + "\n" + "Words: ";
+             for(int i = 0; i < wordsAdded.size(); i++){
+               output += wordsAdded.get(i);
+               output += " ";
+             }
              return output;
            }
         //Parse integers command = Integer.parseInt(args[j])
