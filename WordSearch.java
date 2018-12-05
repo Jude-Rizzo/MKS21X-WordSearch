@@ -166,9 +166,10 @@ public class WordSearch{
                }
                output += "|\n|";
              }
+             output = output.substring(0, output.length() - 1);
              output = output + "\n" + "Words: ";
              for(int i = 0; i < wordsAdded.size(); i++){
-               output += wordsAdded.get(i);
+               output += wordsAdded.get(i).toUpperCase() + ",";
                output += " ";
              }
              return output;
