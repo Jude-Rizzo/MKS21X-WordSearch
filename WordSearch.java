@@ -196,6 +196,9 @@ public class WordSearch{
             }
 
             if(args.length == 5 && args[4].equals("key")){
+              if(Integer.parseInt(args[3]) < 0 || Integer.parseInt(args[3]) > 10000){
+                System.out.println("Your seed must be from 0 to 1000");
+              } else {
               int rows = Integer.parseInt(args[0]);
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
@@ -203,6 +206,7 @@ public class WordSearch{
               ans.fillInWords();
               System.out.println(ans);
               System.out.println("The seed was " + args[3]);
+            }
             }
             //Number Format exception = improper input; file not found caught already in the constructor
           } catch(NumberFormatException e){
