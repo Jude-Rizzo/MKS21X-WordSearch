@@ -222,11 +222,8 @@ public class WordSearch{
               int columns = Integer.parseInt(args[1]);
               WordSearch ans = new WordSearch(rows, columns, args[2], Integer.parseInt(args[3]));
 
-              System.out.println(ans.toString(true));
-              ans.fillInWords();
+              System.out.println(ans.toString() + "\n" + "The seed was: " + args[3]);
 
-              System.out.println(ans);
-              System.out.println("The seed was " + args[3]);
             }
             }
             //Number Format exception = improper input; file not found caught already in the constructor
